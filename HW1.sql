@@ -1,4 +1,5 @@
 -- Part 1
+-- The user table has a one or zero to zero or many on the file table
 CREATE TABLE USER(
     UserID int PRIMARY KEY,
     UserName varchar(50) NOT NULL,
@@ -15,6 +16,10 @@ CREATE TABLE FILE(
 )
 
 -- PART 2
+-- The Student table has a one or zero to zero or many relationship with the enrollment table.
+-- The enrollment table has a zero or many to zero or one relationship with both the student and course table.
+-- The enrollment table also acts as a bridge table
+-- The course table has a one or zero to zero or many relationship with the enrollment table.
 CREATE TABLE STUDENT(
     StudentID int PRIMARY KEY,
     StudentName varchar(50) NOT NULL,
