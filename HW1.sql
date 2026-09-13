@@ -10,7 +10,8 @@ CREATE TABLE FILE(
     FileName varchar(50) NOT NULL,
     FileSize varchar(50) NOT NULL,
     UploadDate DATE NOT NULL,
-    UserID int FOREIGN KEY
+    UserID int FOREIGN KEY,
+    FOREIGN KEY (UserID) REFERENCES USER(UserID)
 )
 
 -- PART 2
@@ -24,4 +25,14 @@ CREATE TABLE COURSE(
     CourseID int PRIMARY KEY,
     CourseTitle varchar(50) NOT NULL,
     CourseHours int NOT NULL
+)
+
+CREATE TABLE ENROLLMENT(
+    StudentID int FOREIGN KEY,
+    CourseID int FOREIGN KEY,
+    Semester varchar(50) NOT NULL,
+    Grade int NOT NULL,
+    PRIMARY KEY (StudentID, CourseID, Semester),
+    FOREIGN KEY (StudentID) REFERENCES STUDENT(StudentID),
+    FOREIGN KEY (CourseID) REFERENCES COURSE(CourseID)
 )
