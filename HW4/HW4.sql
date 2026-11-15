@@ -78,3 +78,15 @@ GROUP BY s.student_id, s.student_name;
 SELECT student_id, student_name, total_credit_hours
 FROM v_student_credit_totals
 WHERE total_credit_hours > 3;
+
+--Part 4.4
+CREATE OR REPLACE VIEW v_students_without_enrollment AS
+SELECT 
+    s.student_id,
+    s.student_name
+FROM Student s
+LEFT JOIN Enrollment e ON s.student_id = e.student_id
+WHERE e.student_id IS NULL;
+
+SELECT student_id, student_name
+FROM v_students_without_enrollment;
