@@ -10,15 +10,13 @@ print("Train shape:", train.shape)
 print("Test shape:", test.shape)
 print(train.head())
 
-
-
 features = ['n_courses', 'n_terms', 'credits_total', 'last_term', 'gpa', 'has_gpa']
 X_train, y_train = train[features], train['retained']
 X_test, y_test = test[features], test['retained']
 
-# Part 1: Baseline accuracy (predict retained = 1 for all test students)
+# Part 1: Retained 1
 baseline_acc = (y_test == 1).mean()
-print(f"\nPart 1 — Baseline test accuracy (predict all 1): {baseline_acc:.3f}\n")
+print(f"\nPart 1 — Baseline test accuracy (retained 1): {baseline_acc:.3f}\n")
 
 # Part 2: Decision tree with max_depth=1
 tree_1 = DecisionTreeClassifier(max_depth=1, random_state=0)
